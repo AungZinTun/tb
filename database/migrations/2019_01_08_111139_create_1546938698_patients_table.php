@@ -30,7 +30,6 @@ class Create1546938698PatientsTable extends Migration
                 $table->string('type_of_patient')->nullable();
                 $table->string('regimen')->nullable();
                 $table->string('smear_result_0')->nullable();
-                
                 $table->timestamps();
                 $table->softDeletes();
 

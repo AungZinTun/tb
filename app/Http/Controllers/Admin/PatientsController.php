@@ -44,7 +44,7 @@ class PatientsController extends Controller
                 'patients.tb_no',
                 'patients.name',
                 'patients.sex',
-                'patients.dob',
+                'patients.age',
                 'patients.current_address',
                 'patients.report_person_id',
                 'patients.health_facility_id',
@@ -128,8 +128,8 @@ class PatientsController extends Controller
             $table->editColumn('sex', function ($row) {
                 return $row->sex ? $row->sex : '';
             });
-            $table->editColumn('dob', function ($row) {
-                return $row->dob ? $row->dob : '';
+            $table->editColumn('age', function ($row) {
+                return $row->age ? $row->age : '';
             });
             $table->editColumn('current_address', function ($row) {
                 return $row->current_address ? $row->current_address : '';

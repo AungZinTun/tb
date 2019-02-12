@@ -37,7 +37,7 @@
                         <th>@lang('quickadmin.patient.fields.tb-no')</th>
                         <th>@lang('quickadmin.patient.fields.name')</th>
                         <th>@lang('quickadmin.patient.fields.sex')</th>
-                        <th>@lang('quickadmin.patient.fields.dob')</th>
+                        <th>age</th>
                         <th>@lang('quickadmin.patient.fields.current-address')</th>
                         <th>@lang('quickadmin.patient.fields.health-facility')</th>
                         <th>@lang('quickadmin.patient.fields.phone')</th>
@@ -88,7 +88,7 @@
                 {data: 'tb_no', name: 'tb_no'},
                 {data: 'name', name: 'name'},
                 {data: 'sex', name: 'sex'},
-                {data: 'dob', name: 'dob'},
+                {data: 'age', name: 'age'},
                 {data: 'current_address', name: 'current_address'},
                 {data: 'health_facility.title', name: 'health_facility.title'},
                 {data: 'phone', name: 'phone'},

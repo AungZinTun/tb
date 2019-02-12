@@ -76,7 +76,7 @@ class Patient extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['txt_start_date', 'tb_no', 'name', 'sex', 'dob',
+    protected $fillable = ['txt_start_date', 'tb_no', 'name', 'sex', 'dob','age',
      'current_address', 'phone', 'referred_by', 'permanent_address', 'dot_provider',
       'dots_supervisor', 'contact_person', 'type_of_patient', 'tb_site', 'regimen',
        'smear_result_0', 'x_pert_result', 'culture_result', 'dst_h_0', 'dst_r_0', 'dst_e_0', 'lpa_e_0', 'lpa_r_0', 'weight', 

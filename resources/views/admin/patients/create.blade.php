@@ -11,9 +11,12 @@
         <div class="row">
             <div class="col-sm-6 bg-success">
                         <div class="row">
-                            <div class="col-xs-6 form-group">
-                                {!! Form::label('name', trans('quickadmin.patient.fields.name').'', ['class' => 'control-label form-inline']) !!}
-                                {!! Form::text('name', old('name'), ['class' => 'form-control form-inline', 'placeholder' => '']) !!}
+                            <div class="col-xs-2 form-group">
+                                {!! Form::label('name', trans('quickadmin.patient.fields.name').'', ['class' => 'control-label form-group']) !!}
+                             
+                            </div>
+                            <div class="col-xs-4">
+                            {!! Form::text('name', old('name'), ['class' => 'form-control form-group', 'placeholder' => '']) !!}
                                 <p class="help-block"></p>
                                 @if($errors->has('name'))
                                     <p class="help-block">
@@ -23,9 +26,12 @@
                             </div>
                     
                     
-                            <div class="col-xs-6 form-group">
+                            <div class="col-xs-2 form-group">
                                 {!! Form::label('phone', trans('quickadmin.patient.fields.phone').'*', ['class' => 'control-label']) !!}
-                                {!! Form::text('phone', old('phone'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
+                               
+                            </div>
+                            <div class="col-xs-4">
+                            {!! Form::text('phone', old('phone'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
                                 <p class="help-block"></p>
                                 @if($errors->has('phone'))
                                     <p class="help-block">
@@ -36,10 +42,13 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-xs-12 form-group">
+                            <div class="col-xs-4 form-group">
                                 {!! Form::label('permanent_address','Address', ['class' => 'control-label']) !!}
+                          
+                            </div>
+                            <div class="col-xs-8">
                                 {!! Form::text('permanent_address', old('permanent_address'), ['class' => 'form-control', 'placeholder' => 'Permanent Address']) !!}
-                            
+                                
                                 <p class="help-block"></p>
                                 @if($errors->has('permanent_address'))
                                     <p class="help-block">
@@ -58,8 +67,8 @@
 
 
                         <div class="row">
-                            <div class="col-xs-4 form-inline">
-                                {!! Form::label('sex', trans('quickadmin.patient.fields.sex').'', ['class' => 'control-label form-inline']) !!}
+                            <div class="col-xs-4 form-group">
+                                {!! Form::label('sex', trans('quickadmin.patient.fields.sex').'', ['class' => 'control-label form-group']) !!}
                                 <p class="help-block"></p>
                                 @if($errors->has('sex'))
                                     <p class="help-block">
@@ -95,19 +104,23 @@
 
 
                         <div class="row">
-                            <div class="col-xs-12 form-inline">
+                            <div class="col-xs-4 form-group">
                                 {!! Form::label('dot_provider', trans('quickadmin.patient.fields.dot-provider').'', ['class' => 'control-label']) !!}
-                                {!! Form::text('dot_provider', old('dot_provider'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                           
+                            </div>
+                            <div class="col-xs-8">
+                            {!! Form::text('dot_provider', old('dot_provider'), ['class' => 'form-control', 'placeholder' => '']) !!}
                                 <p class="help-block"></p>
                                 @if($errors->has('dot_provider'))
                                     <p class="help-block">
                                         {{ $errors->first('dot_provider') }}
                                     </p>
                                 @endif
+                            
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-xs-12 form-inline">
+                            <div class="col-xs-12 form-group">
                                 {!! Form::label('dots_supervisor', trans('quickadmin.patient.fields.dots-supervisor').'', ['class' => 'control-label']) !!}
                                 {!! Form::text('dots_supervisor', old('dots_supervisor'), ['class' => 'form-control', 'placeholder' => '']) !!}
                                 <p class="help-block"></p>
@@ -119,7 +132,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-xs-12 form-inline">
+                            <div class="col-xs-12 form-group">
                                 {!! Form::label('contact_person', trans('quickadmin.patient.fields.contact-person').'', ['class' => 'control-label']) !!}
                                 {!! Form::text('contact_person', old('contact_person'), ['class' => 'form-control', 'placeholder' => '']) !!}
                                 <p class="help-block"></p>
@@ -132,9 +145,9 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-xs-12 form-inline">
+                            <div class="col-xs-12 form-group">
                                 {!! Form::label('referred_by', trans('quickadmin.patient.fields.referred-by').'', ['class' => 'control-label']) !!}
-                                {!! Form::text('referred_by', old('referred_by'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                                {!! Form::select('referred_by', array('H'=>'Health Staff', 'P'=>'Private Prectioner', 'C'=>'Community', 'O'=>'Other'), old('referred_by'), ['class' => 'form-control', 'placeholder' => 'Select']) !!}
                                 <p class="help-block"></p>
                                 @if($errors->has('referred_by'))
                                     <p class="help-block">
@@ -182,8 +195,8 @@
                          
                     
                             <div class="row">
-                                <div class="col-xs-4 form-inline">
-                                    {!! Form::label('tb_site', trans('quickadmin.patient.fields.tb-site').'', ['class' => 'control-label form-inline']) !!}
+                                <div class="col-xs-4 form-group">
+                                    {!! Form::label('tb_site', trans('quickadmin.patient.fields.tb-site').'', ['class' => 'control-label form-group']) !!}
                                     <p class="help-block"></p>
                                     @if($errors->has('tb_site'))
                                         <p class="help-block">
@@ -207,7 +220,7 @@
                             </div>
 
                             <div class="row">
-                            <div class="col-xs-12 form-inline">
+                            <div class="col-xs-12 form-group">
                                 {!! Form::label('type_of_patient', trans('quickadmin.patient.fields.type-of-patient').'', ['class' => 'control-label']) !!}
                                 <p class="help-block"></p>
                                 @if($errors->has('type_of_patient'))

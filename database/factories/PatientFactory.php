@@ -2,11 +2,12 @@
 
 $factory->define(App\Patient::class, function (Faker\Generator $faker) {
     return [
-        "txt_start_date" => $faker->date("Y-m-d", $max = 'now'),
+        "txt_start_date" =>date("2019-5-5"),
         "tb_no" => $faker->name,
         "name" => $faker->name,
         "sex" => collect(["1","0",])->random(),
         "dob" => $faker->date("Y-m-d", $max = 'now'),
+        "age"=> $faker->randomNumber(2),
         "current_address" => $faker->name,
         "report_person_id" => collect(["2","3",])->random(),
         "health_facility_id" => collect(["1","2",])->random(),
@@ -19,8 +20,8 @@ $factory->define(App\Patient::class, function (Faker\Generator $faker) {
         "type_of_patient" => collect(["1","2","3","4","5","6","7",])->random(),
         "tb_site" => collect(["1","0",])->random(),
         "regimen" => collect(["1","2","3",])->random(),
-        "smear_result_0" => collect(["1","2","3",])->random(),
-        "x_pert_result" => collect(["1","2","3","4","5",])->random(),
+        "smear_result_0" => collect([NULL,0,])->random(),
+        "x_pert_result" => collect([Null, 0])->random(),
         "culture_result" => $faker->randomNumber(2),
         "dst_h_0" => $faker->randomNumber(2),
         "dst_r_0" => $faker->randomNumber(2),

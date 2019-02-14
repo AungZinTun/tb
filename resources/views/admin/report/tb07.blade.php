@@ -18,19 +18,17 @@
             <td colspan=6 > Report Period 
                 <div>
                 <form action="" method="GET">
-                {!! Form::label('from', 'from', ['class' => 'control-label']) !!}
-                {!! Form::text('from', $from, ['class' => 'form-control date', 'placeholder' => '', 'required' => '']) !!}    
-                {!! Form::label('to', 'to', ['class' => 'control-label']) !!}
-                {!! Form::text('to', $to, ['class' => 'form-control date', 'placeholder' => '', ]) !!}  
-                <button type='submit'>Filter</button>  
+               
+                {!! Form::text('year', $year, ['class' => 'form-control date', 'placeholder' => '']) !!}
+                <p></p>
+                {!! Form::select('quarter',array(1=>'Q 1', 2=>'Q 2', 3=>'Q 3', 4=>'Q 4'), $q, ['class' => 'form-control', 'placeholder' => 'Annual']) !!}
+               <p></p>
+                <button type='submit' class='btn btn-sm btn-primary'><i class="fa fa-filter"></i> Filter</button>  
                 
                 </form>
                 </div>
             </td>
-            <td colspan=6> Quarter {{$thisQ}}
-            @foreach ($patient as $pt)
-           {{ $pt->id}}
-            @endforeach
+            <td colspan=6> 
              </td>
         </tr>
    
@@ -71,7 +69,7 @@
     <tbody>
         
             <tr>
-                <td>Pulmanary Bact Confirm</td>
+                <td>pulmonary Bact Confirm</td>
                 <td>{{ $pb_n_m}} </td> <td>{{ $pb_n_f}} </td>  
                 <td>{{ $pb_r_m}} </td><td>{{ $pb_r_f}}</td> 
                 <td>{{ $pb_p_m}} </td><td>{{ $pb_p_f}} </td>   
@@ -81,92 +79,120 @@
             </tr>
 
             <tr>
-                <td>Pulmanary Clinical Diagnose</td>
-                <td> {{ $pb_n_m}} </td>
-                <td>{{ $pb_n_f}} </td>
-
-                <td>{{ $pb_n_m}} </td>
-                <td>{{ $pb_n_f}} </td>
-
-                <td>{{ $pb_n_m}} </td>
-                <td>{{ $pb_n_f}} </td>
-
-                <td>{{ $pb_n_m}} </td>
-                <td>{{ $pb_n_f}} </td>
-                
-                <td>{{ $pb_n_m}} </td>
-                <td>{{ $pb_n_f}} </td>
-
-                <td>{{ $pb_n_m}} </td>
-                
-
+                <td>pulmonary Clinically Diagnosed</td>
+                <td>{{ $pc_n_m}} </td> <td>{{ $pc_n_f}} </td>  
+                <td>{{ $pc_r_m}} </td><td>{{ $pc_r_f}}</td> 
+                <td>{{ $pc_p_m}} </td><td>{{ $pc_p_f}} </td>   
+                <td>{{ $pc_u_m}} </td><td>{{ $pc_u_f}} </td>  
+                <td> {{$pc_m}} </td><td>{{$pc_f}} </td>  
+                <td> {{count($pc)}} </td>
             </tr>
+
       
             <tr>
                 <td>EP Bact Confirm</td>
-                <td>{{ $pb_n_m}} </td>
-                <td>{{ $pb_n_f}} </td>
-
-                <td>{{ $pb_n_m}} </td>
-                <td>{{ $pb_n_f}} </td>
-
-                <td>{{ $pb_n_m}} </td>
-                <td>{{ $pb_n_f}} </td>
-
-                <td>{{ $pb_n_m}} </td>
-                <td>{{ $pb_n_f}} </td>
-                
-                <td>{{ $pb_n_m}} </td>
-                <td>{{ $pb_n_f}} </td>
-
-                <td>{{ $pb_n_m}} </td>
-               
-
+                <td>{{ $eb_n_m}} </td> <td>{{ $eb_n_f}} </td>  
+                <td>{{ $eb_r_m}} </td><td>{{ $eb_r_f}}</td> 
+                <td>{{ $eb_p_m}} </td><td>{{ $eb_p_f}} </td>   
+                <td>{{ $eb_u_m}} </td><td>{{ $eb_u_f}} </td>  
+                <td> {{$eb_m}} </td><td>{{$eb_f}} </td>  
+                <td> {{count($eb)}} </td>
             </tr>
 
             <tr>
-                <td>EP Clinical Diagnose</td>
-                <td>{{ $pb_n_m}} </td>
-                <td>{{ $pb_n_f}} </td>
-
-                <td>{{ $pb_n_m}} </td>
-                <td>{{ $pb_n_f}} </td>
-
-                <td>{{ $pb_n_m}} </td>
-                <td>{{ $pb_n_f}} </td>
-
-                <td>{{ $pb_n_m}} </td>
-                <td>{{ $pb_n_f}} </td>
-                
-                <td>{{ $pb_n_m}} </td>
-                <td>{{ $pb_n_f}} </td>
-
-                <td>{{ $pb_n_m}} </td>
-               
+                <td>pulmonary Clinically Diagnosed</td>
+                <td>{{ $ec_n_m}} </td> <td>{{ $ec_n_f}} </td>  
+                <td>{{ $ec_r_m}} </td><td>{{ $ec_r_f}}</td> 
+                <td>{{ $ec_p_m}} </td><td>{{ $ec_p_f}} </td>   
+                <td>{{ $ec_u_m}} </td><td>{{ $ec_u_f}} </td>  
+                <td> {{$ec_m}} </td><td>{{$ec_f}} </td>  
+                <td> {{count($ec)}} </td>
             </tr>
 
-            <tr>
-                <td>Total</td>
-                <td>{{ $pb_n_m}} </td>
-                <td>{{ $pb_n_f}} </td>
+          
+          
 
-                <td>{{ $pb_n_m}} </td>
-                <td>{{ $pb_n_f}} </td>
-
-                <td>{{ $pb_n_m}} </td>
-                <td>{{ $pb_n_f}} </td>
-
-                <td>{{ $pb_n_m}} </td>
-                <td>{{ $pb_n_f}} </td>
-                
-                <td>{{ $pb_n_m}} </td>
-                <td>{{ $pb_n_f}} </td>
-
-                <td>{{ $pb_n_m}} </td>
-               
-
-            </tr>
     </tbody>
+</table>
+<!-- block 2 -->
+<table  class="table table-bordered">
+    <thead>
+        <tr> <td>Block 2: </td></tr>
+        <tr class='bg-success text-centered'>
+           <th> Age </th>
+           <th colspan=2 > 0-4 </th>
+           <th colspan=2 > 5-9 </th>
+           <th colspan=2 > 10-14 </th>
+           <th colspan=2 > 15-24 </th>
+           <th colspan=2 > 25-34 </th>
+           <th colspan=2 > 35-44 </th>
+           <th colspan=2 > 45-54 </th>
+           <th colspan=2 > 55-64 </th>
+           <th colspan=2 > >65 </th>
+           <th colspan=2 > Total </th>
+           <th rowspan=2 class='mb-2' >Grand Total</th>
+        </tr>
+        <tr class='bg-success text-centered'>
+           <th>Type</th>
+           <th>M</th>
+           <th>F</th>
+           <th>M</th>
+           <th>F</th>
+           <th>M</th>
+           <th>F</th>
+           <th>M</th>
+           <th>F</th>
+           <th>M</th>
+           <th>F</th>
+           <th>M</th>
+           <th>F</th>
+           <th>M</th>
+           <th>F</th>
+           <th>M</th>
+           <th>F</th>
+           <th>M</th>
+           <th>F</th>
+           <th>M</th>
+           <th>F</th>
+       </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+            New
+            </td>
+            <td>{{ $n_04_m }} </td>  <td>{{ $n_04_f }} </td>
+            <td>{{ $n_04_m }} </td>  <td>{{ $n_04_f }} </td>
+            <td>{{ $n_04_m }} </td>  <td>{{ $n_04_f }} </td>
+        </tr>
+
+        <tr>
+            <td>
+            Relapse
+            </td>
+        </tr>
+        <tr>
+            <td>
+           Total
+            </td>
+        </tr>
+
+<!-- preview -->
+        <tr class="bg-warning"><td>detail</td></tr>
+
+
+
+    @foreach ($n_04 as $pt)
+            <tr>
+           
+           <td>
+           {{ ($pt->age) }} 
+           </td>
+          
+            </tr>
+            @endforeach
+    </tbody>
+
 </table>
         </div>
     </div>
@@ -184,7 +210,7 @@
             });
             
             $('.date').datetimepicker({
-                format: "{{ config('app.date_format_moment') }}",
+                format: "YYYY",
                 locale: "{{ App::getLocale() }}",
             });
             

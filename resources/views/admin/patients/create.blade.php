@@ -343,18 +343,9 @@
                             
                     
             <div class="row">
-                <div class="col-xs-4">
-                    {!! Form::label('txt_start_date','Treatment Start Date *'.'', ['class' => 'control-label']) !!}
-                    {!! Form::text('txt_start_date', old('txt_start_date'), ['class' => 'form-control date', 'placeholder' => 'Treatment Start Date','required'=>'']) !!}
-                    <p class="help-block"></p>
-                    @if($errors->has('txt_start_date'))
-                        <p class="help-block">
-                            {{ $errors->first('txt_start_date') }}
-                        </p>
-                    @endif
-                </div>
+               
 
-                <div class="col-xs-8">
+                <div class="col-xs-12">
                         <table class='table bg-success table-sm borderless'>
                                 <thead class='gb-success'>
 
@@ -550,6 +541,18 @@
                             
                                 </tbody>
                         </table>
+                </div>
+            </div>
+            <div class="row">
+            <div class="col-xs-12">
+                    {!! Form::label('txt_start_date','Treatment Start Date *'.'', ['class' => 'control-label']) !!}
+                    {!! Form::text('txt_start_date', old('txt_start_date'), ['class' => 'form-control date', 'placeholder' => 'Treatment Start Date','required'=>'']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('txt_start_date'))
+                        <p class="help-block">
+                            {{ $errors->first('txt_start_date') }}
+                        </p>
+                    @endif
                 </div>
             </div>
     

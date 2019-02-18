@@ -161,16 +161,47 @@
             <td>
             New
             </td>
-            <td>{{ $n_04_m }} </td>  <td>{{ $n_04_f }} </td>
-            <td>{{ $n_04_m }} </td>  <td>{{ $n_04_f }} </td>
-            <td>{{ $n_04_m }} </td>  <td>{{ $n_04_f }} </td>
+            <td>{{ $n_04_m }} </td>    <td>{{ $n_04_f }} </td>
+            <td>{{ $n_59_m }} </td>    <td>{{ $n_59_f }} </td>
+            <td>{{ $n_1014_m }} </td>  <td>{{$n_1014_f }} </td>
+            <td>{{ $n_1524_m }} </td>  <td>{{ $n_1524_f }} </td>
+            <td>{{ $n_2534_m }} </td>  <td>{{ $n_2534_f }} </td>
+            <td>{{ $n_3544_m }} </td>  <td>{{ $n_3544_f }} </td>
+            <td>{{ $n_4554_m }} </td>  <td>{{ $n_4554_f }} </td>
+            <td>{{ $n_5564_m }} </td>  <td>{{ $n_5564_f }} </td>
+            <td>{{ $n_65_m }} </td>    <td>{{ $n_65_f }} </td>
+            <td>{{ count($n_m) }} </td>       <td>{{ count($n_f) }} </td>
+            <td>{{ count($n) }} </td>  
         </tr>
-
         <tr>
             <td>
             Relapse
             </td>
+            <td>{{ $r_04_m }} </td>    <td>{{ $r_04_f }} </td>
+            <td>{{ $r_59_m }} </td>    <td>{{ $r_59_f }} </td>
+            <td>{{ $r_1014_m }} </td>  <td>{{$r_1014_f }} </td>
+            <td>{{ $r_1524_m }} </td>  <td>{{ $r_1524_f }} </td>
+            <td>{{ $r_2534_m }} </td>  <td>{{ $r_2534_f }} </td>
+            <td>{{ $r_3544_m }} </td>  <td>{{ $r_3544_f }} </td>
+            <td>{{ $r_4554_m }} </td>  <td>{{ $r_4554_f }} </td>
+            <td>{{ $r_5564_m }} </td>  <td>{{ $r_5564_f }} </td>
+            <td>{{ $r_65_m }} </td>    <td>{{ $r_65_f }} </td>
+            <td>{{ count($r_m) }} </td>       <td>{{ count($r_f) }} </td>
+            <td>{{ count($r) }} </td>  
         </tr>
+            <td>Total</td>
+            <td>{{ $n_04_m + $r_04_m}} </td>    <td>{{ $n_04_f }} </td>
+            <td>{{ $n_59_m +  $r_59_m }} </td>    <td>{{ $n_59_f }} </td>
+            <td>{{ $n_1014_m +  $r_1014_m }} </td>  <td>{{$n_1014_f }} </td>
+            <td>{{ $n_1524_m + $r_1524_m }} </td>  <td>{{ $n_1524_f }} </td>
+            <td>{{ $n_2534_m + $r_2534_m }} </td>  <td>{{ $n_2534_f }} </td>
+            <td>{{ $n_3544_m +  $r_3544_m }} </td>  <td>{{ $n_3544_f }} </td>
+            <td>{{ $n_4554_m +  $r_4554_m }} </td>  <td>{{ $n_4554_f }} </td>
+            <td>{{ $n_5564_m +  $r_5564_m }} </td>  <td>{{ $n_5564_f }} </td>
+            <td>{{ $n_65_m  + $r_65_m}} </td>    <td>{{ $n_65_f + $r_65_f}} </td>
+            <td>{{ count($n_m) + count($r_m) }} </td>       <td>{{ count($n_f) + count($r_f) }} </td>
+            <td>{{ count($n) +  count($r) }} {{count($nr)}} </td>  
+         
         <tr>
             <td>
            Total
@@ -181,16 +212,20 @@
         <tr class="bg-warning"><td>detail</td></tr>
 
 
+        {{  $no=1}}
+    @foreach ($n_2534 as $pt)
 
-    @foreach ($n_04 as $pt)
             <tr>
-           
+           <td> {{ $no++ }} </td>
+
            <td>
-           {{ ($pt->age) }} 
+             {{ ($pt->age) }} 
            </td>
+          
           
             </tr>
             @endforeach
+            
     </tbody>
 
 </table>

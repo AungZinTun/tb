@@ -87,7 +87,7 @@
                 <ul class="treeview-menu">
                    
                     <li>
-                        <a href="/admin/tb07">
+                        <a href="/admin/tb07/">
                             <i class="fa fa-file"></i>
                             <span>07</span>
                         </a>

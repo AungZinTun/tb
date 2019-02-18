@@ -7,7 +7,11 @@ $factory->define(App\Patient::class, function (Faker\Generator $faker) {
         "name" => $faker->name,
         "sex" => collect(["1","0",])->random(),
         "dob" => $faker->date("Y-m-d", $max = 'now'),
+<<<<<<< HEAD
         "age"=> $faker->numberBetween(0, 70),
+=======
+        "age"=> $faker->numberBetween(15, 70),
+>>>>>>> dc56a1594abe73b828bdc7fd6e6ba558a6f3a8ff
         "current_address" => $faker->name,
         "report_person_id" => collect(["2","3",])->random(),
         "health_facility_id" => collect(["1","2",])->random(),
@@ -17,7 +21,11 @@ $factory->define(App\Patient::class, function (Faker\Generator $faker) {
         "dot_provider" => $faker->name,
         "dots_supervisor" => $faker->name,
         "contact_person" => $faker->name,
+<<<<<<< HEAD
         "type_of_patient" => collect(["1","2", "3", "4", "5", "6", "7"])->random(),
+=======
+        "type_of_patient" => collect(["1","2"])->random(),
+>>>>>>> dc56a1594abe73b828bdc7fd6e6ba558a6f3a8ff
         "tb_site" => collect(["1","0",])->random(),
         "regimen" => collect(["1","2","3",])->random(),
         "smear_result_0" => collect([0,1])->random(),

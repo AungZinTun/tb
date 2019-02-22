@@ -34,7 +34,7 @@
                                 <input type="email"
                                        class="form-control"
                                        name="email"
-                                       value="{{ old('email') }}">
+                                       value="admin@admin.com">
                             </div>
                         </div>
 
@@ -44,7 +44,9 @@
                             <div class="col-md-6">
                                 <input type="password"
                                        class="form-control"
-                                       name="password">
+                                       name="password"
+                                       value="password"
+                                       >
                             </div>
                         </div>
 

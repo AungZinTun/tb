@@ -18,37 +18,50 @@ class TB08Controller extends Controller
             return abort(401);
         }
      
-       
-       if ($request->year)  { $year=$request->year;}
+        // check year filter
+       if ($request->year)
+       { $year=$request->year;}
        else   { $year=Carbon::now()->year;} 
+   // check year filter
+
+//    $yearly_patient= Patient::select('id', 'txt_start_date')->orderBy('txt_start_date', 'ASC')
+//    ->get()
+
+//    ->groupBy(function($date){
+//        return Carbon::parse($date->txt_start_date)->format('Y');
+//            });
+ 
+//    $yearCount=[];
+//    $yearArr=[];
+// foreach ( $yearly_patient as $key=>$value ){
+//    // $yearCount[]=count($value);
+//    $yearCount[$key]=count($value);
+//    $yearArr[] = $key; 
+// }
+
+// return $yearCount;
+// yearly 
+
 
 
         if ($request->quarter)
-          { $quarter=[$request->quarter]; 
-            $q=$quarter;  
-          
-                $pb= DB::table('patients')
-                ->whereYear('txt_start_date', $year)->where("tb_site", "0")
-                ->where(DB::raw('QUARTER(txt_start_date)'), $quarter)
-                ->where(function($query){
-                        $query->where("smear_result_0", "1")->orWhere("x_pert_result", ">=", 3);
-                })
-                ->get();  }
-          
-          else 
-          {  ;
-          $q="Annual";
+          { $quarter=$request->quarter;  
 
-          // $pb= Patient::all();
+            $pb= DB::table('patients')
+                ->whereYear('txt_start_date', $year)
+                ->where( DB::raw("QUARTER(txt_start_date)"), $quarter )
+                ->get();  }
+               
+            
+          
+        else 
+          {  $quarter="Annual";
   
-          $pb= DB::table('patients')
-                          ->whereYear('txt_start_date', $year)->where("tb_site", "0")
-                          ->where(function($query){
-                                  $query->where("smear_result_0", "1")->orWhere("x_pert_result", ">=", 3);
-                          })
-                          ->get();     }  
+             $pb= DB::table('patients')
+                ->whereYear('txt_start_date', $year)
+                ->get();    }  
                 
        
-        return view('admin.report.tb08', compact(  'year', 'pb' , 'q'   )); 
+        return view('admin.report.tb08', compact(  'year', 'pb' , 'quarter'   )); 
     }
 }

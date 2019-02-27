@@ -21,7 +21,7 @@
                
                 {!! Form::text('year', $year, ['class' => 'form-control date', 'placeholder' => '']) !!}
                 <p></p>
-                {!! Form::select('quarter',array(1=>'Q 1', 2=>'Q 2', 3=>'Q 3', 4=>'Q 4'), $q, ['class' => 'form-control', 'placeholder' => 'Annual']) !!}
+                {!! Form::select('quarter',array(1=>'Q 1', 2=>'Q 2', 3=>'Q 3', 4=>'Q 4'), $quarter , ['class' => 'form-control', 'placeholder' => 'Annual']) !!}
                <p></p>
                 <button type='submit' class='btn btn-sm btn-primary'><i class="fa fa-filter"></i> Filter</button>  
                 
@@ -29,7 +29,7 @@
                 </div>
             </td>
             <td colspan=6> 
-            {{ count($pb) }}
+            {{ count($pb) }} <p></p> {{ $year }} {{ $quarter }}
              </td>
         </tr>
    

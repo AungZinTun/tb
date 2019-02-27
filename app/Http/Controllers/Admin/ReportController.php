@@ -282,15 +282,54 @@ class ReportController extends Controller
                         ->where("age",">=",65);
                         $r_65_m=$r_65 ->where("sex", 1)->count();
                         $r_65_f=$r_65 ->where("sex", 0)->count();
-        return view('admin.report.tb07', compact('q', 'year',
-                        'pb','pb_m','pb_f', 'pb_n_m', 'pb_n_f','pb_r_m', 'pb_r_f', 'pb_p_m', 'pb_p_f', 'pb_u_m', 'pb_u_f',
-                        'pc','pc_m','pc_f', 'pc_n_m', 'pc_n_f','pc_r_m', 'pc_r_f', 'pc_p_m', 'pc_p_f', 'pc_u_m', 'pc_u_f',
-                        'eb','eb_m','eb_f', 'eb_n_m', 'eb_n_f','eb_r_m', 'eb_r_f', 'eb_p_m', 'eb_p_f', 'eb_u_m', 'eb_u_f',
-                        'ec','ec_m','ec_f', 'ec_n_m', 'ec_n_f','ec_r_m', 'ec_r_f', 'ec_p_m', 'ec_p_f', 'ec_u_m', 'ec_u_f',
-                        'n', 'n_m', 'n_f','n_04','n_59', 'n_1014', 'n_1524',  'n_2534' , 'n_3544',  'n_4554',  'n_5564' , 'n_65',
-                        'n_04_m', 'n_04_f', 'n_59_m', 'n_59_f', 'n_1014_m', 'n_1014_f', 'n_1524',  'n_1524_m',  'n_1524_f', 'n_2534_m', 'n_2534_f',  'n_3544_m',  'n_3544_f', 'n_4554_m', 'n_4554_f', 'n_5564_m',  'n_5564_f', 'n_65_m',  'n_65_f',
-                        'nr','r', 'r_m', 'r_f','r_04','r_59', 'r_1014', 'r_1524',  'r_2534' , 'r_3544',  'r_4554',  'r_5564' , 'r_65',
-                        'r_04_m', 'r_04_f', 'r_59_m', 'r_59_f', 'r_1014_m', 'r_1014_f', 'r_1524',  'r_1524_m',  'r_1524_f', 'r_2534_m', 'r_2534_f',  'r_3544_m',  'r_3544_f', 'r_4554_m', 'r_4554_f', 'r_5564_m',  'r_5564_f', 'r_65_m',  'r_65_f'
-                                        ));  }
+        $data=['q', 'year',
+        'pb','pb_m','pb_f', 'pb_n_m', 'pb_n_f','pb_r_m', 'pb_r_f', 'pb_p_m', 'pb_p_f', 'pb_u_m', 'pb_u_f',
+        'pc','pc_m','pc_f', 'pc_n_m', 'pc_n_f','pc_r_m', 'pc_r_f', 'pc_p_m', 'pc_p_f', 'pc_u_m', 'pc_u_f',
+        'eb','eb_m','eb_f', 'eb_n_m', 'eb_n_f','eb_r_m', 'eb_r_f', 'eb_p_m', 'eb_p_f', 'eb_u_m', 'eb_u_f',
+        'ec','ec_m','ec_f', 'ec_n_m', 'ec_n_f','ec_r_m', 'ec_r_f', 'ec_p_m', 'ec_p_f', 'ec_u_m', 'ec_u_f',
+        'n', 'n_m', 'n_f','n_04','n_59', 'n_1014', 'n_1524',  'n_2534' , 'n_3544',  'n_4554',  'n_5564' , 'n_65',
+        'n_04_m', 'n_04_f', 'n_59_m', 'n_59_f', 'n_1014_m', 'n_1014_f', 'n_1524',  'n_1524_m',  'n_1524_f', 'n_2534_m', 'n_2534_f',  'n_3544_m',  'n_3544_f', 'n_4554_m', 'n_4554_f', 'n_5564_m',  'n_5564_f', 'n_65_m',  'n_65_f',
+        'nr','r', 'r_m', 'r_f','r_04','r_59', 'r_1014', 'r_1524',  'r_2534' , 'r_3544',  'r_4554',  'r_5564' , 'r_65',
+        'r_04_m', 'r_04_f', 'r_59_m', 'r_59_f', 'r_1014_m', 'r_1014_f', 'r_1524',  'r_1524_m',  'r_1524_f', 'r_2534_m', 'r_2534_f',  'r_3544_m',  'r_3544_f', 'r_4554_m', 'r_4554_f', 'r_5564_m',  'r_5564_f', 'r_65_m',  'r_65_f'];
+        return view('admin.report.tb07', compact(   $data   )); 
+    }
 
+
+
+    public function tb08(Request $request)
+    {
+        if (! Gate::allows('role_access')) {
+            return abort(401);
+        }
+        $year=$request->year;
+      if ($request->quarter)
+        { $quarter=[$request->quarter];
+         $q=$quarter;}
+        else 
+        {$quarter= [1, 2, 3, 4 ];
+        $q="Annual";}
+
+
+        $yearly_patient= Patient::select('id', 'date_enrolled')->where('user_id', Auth::id())  ->orderBy('date_enrolled', 'ASC')
+        ->get()
+    
+        ->groupBy(function($date){
+            return Carbon::parse($date->date_enrolled)->format('Y');
+                });
+      
+                $yearCount=[];
+                $yearArr=[];
+        foreach ( $yearly_patient as $key=>$value ){
+                // $yearCount[]=count($value);
+                $yearCount[$key]=count($value);
+                $yearArr[] = $key; 
+        }
+        $art_status=Patient::select('id', 'current_art_status')->where('user_id', Auth::id())->orderBy('current_art_status', 'Desc') ->get()
+        ->groupBy('current_art_status');
+        foreach ($art_status as $key=>$value ){
+                $art_status[$key]=count($value);
+        }
+                
+        return view('admin.report.tb08', compact(   'year' , 'q'   )); 
+    }
 }

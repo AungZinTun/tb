@@ -20,7 +20,7 @@ $this->post('password/reset', 'Auth\ResetPasswordController@reset')->name('auth.
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/home', 'HomeController@index');
     Route::get('/tb07', 'Admin\ReportController@tb07');
-    Route::get('/tb08', 'Admin\ReportController@tb08');
+    Route::get('/tb08', 'Admin\TB08Controller@tb08');
     Route::get('/tb-hiv', 'Admin\ReportController@tbhiv');
     Route::get('/calendar', 'Admin\SystemCalendarController@index'); 
   
